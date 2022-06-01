@@ -1,0 +1,28 @@
+{
+  "name": "test-jsx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint . && prettier-eslint --list-different **/*.js",
+    "format": "prettier-eslint --write **/*.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
+    "babel-jest": "^28.1.0",
+    "eslint": "^8.16.0",
+    "eslint-plugin-jest": "^26.4.6",
+    "eslint-plugin-react": "^7.30.0",
+    "jest": "^28.1.0",
+    "prettier-eslint-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  }
+}
