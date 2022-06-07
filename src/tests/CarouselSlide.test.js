@@ -22,6 +22,10 @@ describe('<CarouselSlide />', () => {
     );
   });
 
+  it('renders properly', () => {
+    expect(component).toMatchSnapshot();
+  });
+
   it('renders a <figure>', () => {
     expect(component.getByRole('figure')).toBeInTheDocument();
   });

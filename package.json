@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "lint:css": "stylelint **/*.js",
-    "lint:js": "eslint . && prettier-eslint --list-different **/*.js", 
+    "lint:js": "eslint . && prettier-eslint --list-different **/*.js",
     "lint": "npm run lint:js && npm run lint:css",
     "format": "prettier-eslint --write **/*.js",
     "build": "webpack --config webpack.config.js",
@@ -32,6 +32,7 @@
     "html-webpack-plugin": "^5.5.0",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
+    "jest-styled-components": "^7.0.8",
     "prettier-eslint-cli": "^6.0.1",
     "stylelint": "^14.8.5",
     "stylelint-config-recommended": "^7.0.0",

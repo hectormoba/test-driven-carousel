@@ -32,20 +32,21 @@ describe('Carousel', () => {
   });
 
   it('renders a main tag', () => {
-    expect(component.getByRole('main'));
+    expect(component.getByRole('main')).toBeInTheDocument();
   });
 
   it('has show the first photo when render it', () => {
-    expect(component.getByText(slides[0].description));
+    expect(component.getByText(slides[0].description)).toBeInTheDocument();
   });
 
   it('renders a button for passing to next photo', async () => {
     user = userEvent.setup();
     await user.click(component.getByText('Next'));
+    expect(component.getByText(slides[1].description)).toBeInTheDocument();
   });
 
   it('renders a button for passing to previous photo', () => {
-    expect(component.getByText('Prev'));
+    expect(component.getByText('Prev')).toBeInTheDocument();
   });
 });
 
@@ -56,9 +57,9 @@ describe('when the component is loaded at first time', () => {
   beforeEach(() => {
     component = render(<Carousel slides={slides} />);
   });
-  it.only('clicking `prev` turn to the last photo', async () => {
+  it('clicking `prev` turn to the last photo', async () => {
     user = userEvent.setup();
     await user.click(component.getByText('Prev'));
-    expect(component.getByText(slides[2].description));
+    expect(component.getByText(slides[2].description)).toBeInTheDocument();
   });
 });
