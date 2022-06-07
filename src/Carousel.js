@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { CarouselButton } from './CarouselButton';
 import { CarouselSlide } from './CarouselSlide';
 
-export default function Carousel({ slides }) {
+function Carousel({ slides, defaultImgHeight }) {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const handleClick = (event) => {
     let name = event.target.name;
-    console.log(name);
     if (name === 'prev') {
       if (slideIndex === 0) {
         setSlideIndex(slides.length - 1);
@@ -26,7 +26,7 @@ export default function Carousel({ slides }) {
 
   return (
     <main>
-      <CarouselSlide {...slides[slideIndex]} />
+      <CarouselSlide imgHeight={defaultImgHeight} {...slides[slideIndex]} />
       <CarouselButton name="prev" handleClick={handleClick}>
         Prev
       </CarouselButton>
@@ -36,3 +36,14 @@ export default function Carousel({ slides }) {
     </main>
   );
 }
+
+Carousel.propTypes = {
+  slides: PropTypes.arrayOf(PropTypes.shape(CarouselSlide.propTypes)),
+  defaultImgHeight: CarouselSlide.propTypes.imgHeight,
+};
+
+Carousel.defaultProps = {
+  defaultImgHeight: CarouselSlide.defaultProps.imgHeight,
+};
+
+export default Carousel;

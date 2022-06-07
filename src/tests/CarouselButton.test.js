@@ -3,11 +3,9 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { CarouselButton } from '../CarouselButton';
 import '@testing-library/jest-dom';
-import userEvent from '@testing-library/user-event';
 
 describe('CarouselButton', () => {
   let component;
-  let user;
   const text = 'hello';
 
   beforeEach(() => {
@@ -20,10 +18,5 @@ describe('CarouselButton', () => {
 
   it('renders its children', () => {
     expect(component.getByText(text)).toBeInTheDocument();
-  });
-
-  it('it is clicable', async () => {
-    user = userEvent.setup();
-    await user.click(component.getByRole('button'));
   });
 });

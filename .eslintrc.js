@@ -1,14 +1,14 @@
 module.exports = {
   extends: [
     'eslint:recommended',
-    'plugin:react/recommended',
     'plugin:react/jsx-runtime',
+    'plugin:react/recommended',
     'plugin:prettier/recommended',
     'prettier',
   ],
   plugins: ['react'],
   parserOptions: {
-    ecmaVersion: 6,
+    ecmaVersion: 8,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
