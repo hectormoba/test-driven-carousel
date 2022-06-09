@@ -24,5 +24,6 @@ module.exports = {
   },
   rules: {
     quotes: ['error', 'single', { avoidEscape: true }],
+    'no-unused-vars': ['error', { varsIgnorePattern: '^_' }],
   },
 };

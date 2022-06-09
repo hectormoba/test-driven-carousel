@@ -1,36 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { CarouselButton } from './CarouselButton';
 import { CarouselSlide } from './CarouselSlide';
+import { ComponentWithIndex } from './HasIndex';
 
-function Carousel({ slides, defaultImgHeight }) {
-  const [slideIndex, setSlideIndex] = useState(0);
-
-  const handleClick = (event) => {
-    let name = event.target.name;
-    if (name === 'prev') {
-      if (slideIndex === 0) {
-        setSlideIndex(slides.length - 1);
-      } else {
-        setSlideIndex(slideIndex - 1);
-      }
-    }
-    if (name === 'next') {
-      if (slideIndex === slides.length - 1) {
-        setSlideIndex(0);
-      } else {
-        setSlideIndex(slideIndex + 1);
-      }
-    }
+function Carousel(props) {
+  const handlePrevClick = () => {
+    const { slideIndexDecrement, slides } = props;
+    slideIndexDecrement(slides.length);
   };
+
+  const handleNextClick = () => {
+    const { slideIndexIncrement, slides } = props;
+    slideIndexIncrement(slides.length);
+  };
+
+  const {
+    defaultImg,
+    defaultImgHeight,
+    slideIndex,
+    slideIndexDecrement: _slideIndexDecrement,
+    slideIndexIncrement: _slideIndexIncrement,
+    slides,
+  } = props;
 
   return (
     <main>
-      <CarouselSlide imgHeight={defaultImgHeight} {...slides[slideIndex]} />
-      <CarouselButton name="prev" handleClick={handleClick}>
+      <CarouselSlide
+        Img={defaultImg}
+        imgHeight={defaultImgHeight}
+        {...slides[slideIndex]}
+      />
+      <CarouselButton name="prev" handleClick={handlePrevClick}>
         Prev
       </CarouselButton>
-      <CarouselButton name="next" handleClick={handleClick}>
+      <CarouselButton name="next" handleClick={handleNextClick}>
         Next
       </CarouselButton>
     </main>
@@ -40,10 +44,15 @@ function Carousel({ slides, defaultImgHeight }) {
 Carousel.propTypes = {
   slides: PropTypes.arrayOf(PropTypes.shape(CarouselSlide.propTypes)),
   defaultImgHeight: CarouselSlide.propTypes.imgHeight,
+  slideIndex: PropTypes.number.isRequired,
+  slideIndexDecrement: PropTypes.func.isRequired,
+  slideIndexIncrement: PropTypes.func.isRequired,
+  defaultImg: CarouselSlide.propTypes.Img,
 };
 
 Carousel.defaultProps = {
   defaultImgHeight: CarouselSlide.defaultProps.imgHeight,
 };
 
-export default Carousel;
+export { Carousel };
+export default ComponentWithIndex(Carousel, 'slideIndex');
