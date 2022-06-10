@@ -52,6 +52,7 @@ Carousel.propTypes = {
 };
 
 Carousel.defaultProps = {
+  defaultImg: CarouselSlide.defaultProps.Img,
   defaultImgHeight: CarouselSlide.defaultProps.imgHeight,
 };
 

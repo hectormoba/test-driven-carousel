@@ -1,7 +1,7 @@
 /** @jest-environment jsdom */
 import React from 'react';
 import Carousel from '../Carousel';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 
@@ -28,7 +28,7 @@ describe('Carousel', () => {
   let user;
 
   beforeEach(() => {
-    component = render(<Carousel slides={slides} />);
+    component = render(<Carousel slides={slides} autoAdvanceDelay={1000} />);
   });
 
   it('renders a main tag', () => {
@@ -49,9 +49,14 @@ describe('Carousel', () => {
     expect(component.getByText('Prev')).toBeInTheDocument();
   });
 
-  it('change to a different slide every 10 seconds if had not been a user interaction', () => {
-    expect(component.getByText(slides[1].description)).toBeInTheDocument();
-  }, 10000);
+  it('change to a different slide 2 seconds after rendering', async () => {
+    await waitFor(
+      () => {
+        expect(component.getByText(slides[1].description)).toBeInTheDocument();
+      },
+      { timeout: 2000 }
+    );
+  });
 });
 
 describe('when the component is loaded at first time', () => {

@@ -7,7 +7,7 @@ Object {
     <div>
       <figure>
         <img
-          class="CarouselSlide__Img-sc-1b12id8-0 ccopSw"
+          class="CarouselSlide__DefaultImg-sc-1b12id8-0 hufeTz"
           src="https://example.com/image.png"
         />
         <figcaption>
@@ -23,7 +23,7 @@ Object {
   "container": <div>
     <figure>
       <img
-        class="CarouselSlide__Img-sc-1b12id8-0 ccopSw"
+        class="CarouselSlide__DefaultImg-sc-1b12id8-0 hufeTz"
         src="https://example.com/image.png"
       />
       <figcaption>
