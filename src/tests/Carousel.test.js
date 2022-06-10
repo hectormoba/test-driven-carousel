@@ -48,6 +48,10 @@ describe('Carousel', () => {
   it('renders a button for passing to previous photo', () => {
     expect(component.getByText('Prev')).toBeInTheDocument();
   });
+
+  it('change to a different slide every 10 seconds if had not been a user interaction', () => {
+    expect(component.getByText(slides[1].description)).toBeInTheDocument();
+  }, 10000);
 });
 
 describe('when the component is loaded at first time', () => {

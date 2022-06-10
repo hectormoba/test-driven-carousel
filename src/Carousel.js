@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { CarouselButton } from './CarouselButton';
 import { CarouselSlide } from './CarouselSlide';
 import { ComponentWithIndex } from './HasIndex';
+import AutoAdvance from './AutoAdvance';
 
 function Carousel(props) {
   const handlePrevClick = () => {
@@ -55,4 +56,7 @@ Carousel.defaultProps = {
 };
 
 export { Carousel };
-export default ComponentWithIndex(Carousel, 'slideIndex');
+export default ComponentWithIndex(
+  AutoAdvance(Carousel, 'slideIndex', 'slides'),
+  'slideIndex'
+);

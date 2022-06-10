@@ -6,6 +6,7 @@ module.exports = {
     carousel: './src/Carousel.js',
     example: './example/index.js',
   },
+  devtool: 'inline-source-map',
   plugins: [
     new HtmlWebpackPlugin({
       tittle: 'Carousel Example',
